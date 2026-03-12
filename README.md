@@ -10,7 +10,7 @@ sudo docker compose up -d --build
 sudo docker compose up -d
 
 Download gemma2 model from https://huggingface.co/bartowski/gemma-2-9b-it-GGUF/blob/main/gemma-2-9b-it-Q8_0.gguf, \
-wget --header="Authorization: Bearer <TOKEN>" \
+wget --header="Authorization: Bearer (TOKEN)" \
   "https://huggingface.co/bartowski/gemma-2-9b-it-GGUF/resolve/main/gemma-2-9b-it-Q8_0.gguf" \
   -c -O gemma-2-9b-it-Q8_0.gguf
 
