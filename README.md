@@ -1,9 +1,13 @@
 # RAG AGENT
 A Retrieval-Augmented Generation (RAG) Agent that combines large language models like Ollama and Gemma models with external data source from Qdrant retrieval to provide accurate, context-aware responses.
 
+<video controls src="rag-agent-1.mp4" title="RAG AGENT"></video>
+
+
 ## Steps to setup RAG Agent
 ### Install dependency
-pip install -r requirements.txt --index-url https://download.pytorch.org/whl/cpu
+
+pip install -r requirements.txt
 
 ### Run Ollama and Qdrant from docker 
 sudo docker compose up -d --build
@@ -33,14 +37,18 @@ Create Modelfile.gemma2,
     SYSTEM """You are a precise assistant that answers only using the provided JSON context."""
     EOF
 
-sudo docker exec ragservice-ollama-1 mkdir -p /root/model-import
+>sudo docker exec ragservice-ollama-1 mkdir -p /root/model-import
 
-sudo docker cp Modelfile.gemma2 ragservice-ollama-1:/root/model-import/
+>sudo docker cp Modelfile.gemma2 ragservice-ollama-1:/root/model-import/
 
-sudo docker cp /root/ollama/gemma-2-9b-it-Q8_0.gguf ragservice-ollama-1:/root/model-import/gemma-2-9b-it-Q8_0.gguf
+>sudo docker cp /root/ollama/gemma-2-9b-it-Q8_0.gguf ragservice-ollama-1:/root/model-import/gemma-2-9b-it-Q8_0.gguf
 
-sudo docker exec -w /root/model-import ragservice-ollama-1 ollama create gemma2:9b -f Modelfile.gemma2
+>sudo docker exec -w /root/model-import ragservice-ollama-1 ollama create gemma2:9b -f Modelfile.gemma2
+
+Once done check http://localhost:11434/api/tags and validate model is properly configure,
+![Gemma model config](ollama.png)
 
 ## Run application
-uvicorn rag_service:app --host 0.0.0.0 --port 8001\
-go run main.go
+>uvicorn rag_service:app --host 0.0.0.0 --port 8001\
+
+Update the CORS config in rag_service.py and intergrate it with your frontend!
