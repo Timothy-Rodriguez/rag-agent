@@ -1,8 +1,7 @@
 # RAG AGENT
 A Retrieval-Augmented Generation (RAG) Agent that combines large language models like Ollama and Gemma models with external data source from Qdrant retrieval to provide accurate, context-aware responses.
 
-<video controls src="rag-agent-1.mp4" title="RAG AGENT"></video>
-
+https://github.com/user-attachments/assets/6842b674-2c03-4003-8fcf-8ec85cf49c30
 
 ## Steps to setup RAG Agent
 ### Install dependency
